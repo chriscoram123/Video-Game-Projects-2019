@@ -9,15 +9,15 @@ This collection was made to hoold all files partening to video game projects tha
 <h1>GENRES:</h1>
 ![giphy-1](https://user-images.githubusercontent.com/36040531/60683755-89122a80-9e67-11e9-9e84-7fa7ac5d5367.gif)
 
-* Science Fiction *
-* Horror *
-* Fantasy *
+*Science Fiction*
+*Horror* 
+*Fantasy* 
 
 
 <h1>CATAGORIES</h1>
 
-* First Person Shooter *
-* 3D Games *
-* 2D Games *
-* Third Person Shooter *
-* RPG *
+*First Person Shooter*  
+*3D Games*
+*2D Games*
+*Third Person Shooter*
+*RPG*
