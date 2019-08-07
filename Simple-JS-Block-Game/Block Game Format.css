@@ -1,0 +1,15 @@
+<style>
+h1 {
+color: red;
+}
+h2 {
+font-size: 20px;
+position: relative;
+top: 30px;
+}
+canvas {
+background: #7CFC00;
+display: block;
+margin: 0 auto;
+}
+</style>
