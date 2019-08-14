@@ -32,15 +32,15 @@ This collection was made to hoold all files partening to video game projects tha
 *RPG*
 
 
-<h1>SOFTWARE:</h1>
+<h1>LANGUAGES:</h1> 
 
-*Unity*
+*C#*
 
-*Blender*
-
-*GameMaker Studio*
+*GML*
 
 *Python*
+
+*Javascript*
 
 
 <h1>DEVELOPER:</h1>
