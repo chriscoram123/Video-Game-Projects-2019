@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<head>
+<title>js Shooter Game</title>
+<meta charset="utf-8" />
+</head>
+
+<style>
+canvas {
+background: url("brown-soil-texture-background_1308-20483.jpg");
+display: block;
+margin: 0 auto;
+}
+h1 {
+color: red;
+}
+h2 {
+color: green;
+}
+</style>
+
+<body>
+<center>
+<h1> Javascript Third Person Shooter Game / Simple Game Series </h1>
+<p>INSTRUCTIONS: To move soldier, use the key pad to
+    move left, right, up, and down.</p>
+<p> To fire projectiles, press space bar. To beat the game, reach
+    the other side of the map.
+</p>
+<h2> Either evade enemy objects, or destroy them! </h2>
+<canvas id="Game" height="480px" width="490px"></canvas>
+</center>
+<br>
+</br>
+<center>
+<hr></hr>
+<h2>Copywrite* All images and object models have been produced from scratch</h2>
+</center>
+
+<script>
+// @author: Christopher S Coram
+// Block Game
+// 8 - 07 - 2019 / 2:26 PM
+
+//////////////////////
+ // SET UP VARIABLES //
+ //////////////////////
+
+// Setup canvas...
+var canvas = document.getElementById("Game");
+var ctx = canvas.getContext("2d");
+//...
+// Main objects variables...
+
+// Player object
+var player_x = 10;
+var player_y = 20;
+var player_width = 37;
+var player_height = 5;
+var playerX = (canvas.width-player_width)/2;
+
+
+// Enemy soldier
+var soldier = new Image();
+var soldier_x = 50;
+var soldier_y = 100;
+var soldier_width = 60;
+var soldier_height = 50;
+var soldierX = (canvas.width-soldier_width)/2;
+soldier.src = "survivor-idle_shotgun_0.png";
+
+
+// Game Obstacle, x, y, width, and height values...
+// Obstacle 1
+var obstacle1_height = 30;
+var obstacle1_width = 20;
+var obstacle1_x = 100;
+var obstacle1_y = 30;
+var obstacle1_main = (canvas.width-obstacle1_width) / 5;
+
+
+// Obstacle 2
+var obstacle2_height = 80;
+var obstacle2_width = 20;
+var obstacle2_x = 300;
+var obstacle2_y = 100;
+var obstacle2_main = (canvas.width-obstacle2_width) / 2.5;
+
+
+// Obstacle 3
+var obstacle3_height = 10;
+var obstacle3_width = 20;
+var obstacle3_x = 250;
+var obstacle3_y = 170;
+var obstacle3_main = (canvas.width-obstacle3_width) / 2;
+
+
+// Obstacle 4
+var obstacle4_height = 150;
+var obstacle4_width = 20;
+var obstacle4_x = 200;
+var obstacle4_y = 250;
+var obstacle4_main = (canvas.width-obstacle4_width) / 2;
+
+
+// Obstacle 5
+var obstacle5_height = 20;
+var obstacle5_width = 20;
+var obstacle5_x = 90;
+var obstacle5_y = 390;
+var obstacle5_main = (canvas.width-obstacle5_width) / 2;
+
+
+// Obstacle 6
+var obstacle6_height = 80;
+var obstacle6_width = 20;
+var obstacle6_x = 300;
+var obstacle6_y = 390;
+var obstacle6_main = (canvas.width-obstacle6_width) / 2;
+
+
+// Obstacle 7
+var obstacle7_height = 80;
+var obstacle7_width = 20;
+var obstacle7_x = 80;
+var obstacle7_y = 300;
+var obstacle7_main = (canvas.width-obstacle7_width) / 2;
+
+
+// Obstacle 8
+var obstacle8_height = 80;
+var obstacle8_width = 20;
+var obstacle8_x = 300;
+var obstacle8_y = 250;
+var obstacle8_main = (canvas.width-obstacle8_width) / 2;
+
+
+// Obstacle 9
+var obstacle9_height = 80;
+var obstacle9_width = 20;
+var obstacle9_x = 200;
+var obstacle9_y = 80;
+var obstacle9_main = (canvas.width-obstacle9_width) / 2;
+
+
+// Obstacle 10
+var obstacle10_height = 180;
+var obstacle10_width = 20;
+var obstacle10_x = 450;
+var obstacle10_y = 200;
+var obstacle10_main = (canvas.width-obstacle10_width) / 2;
+
+
+// Obstacle 11
+var obstacle11_height = 80;
+var obstacle11_width = 20;
+var obstacle11_x = 390;
+var obstacle11_y = 340;
+var obstacle11_main = (canvas.width-obstacle11_width) / 2;
+
+
+// Obstacle 12
+var obstacle12_height = 130;
+var obstacle12_width = 20;
+var obstacle12_x = 380;
+var obstacle12_y = 20;
+var obstacle12_main = (canvas.width-obstacle12_width) / 2;
+
+//...
+
+
+// Enemy obstacles...
+// Enemy object 1
+var enemy_obj1_height = 20;
+var enemy_obj1_width = 10;
+var enemy_obj1_x = 44;
+var enemy_obj1_radius = 10;
+var enemy_obj1_y = 44;
+var enemy_obj1_main = (canvas.width-enemy_obj1_width) / 2;
+var obstacle1_speedx = 3;
+var obstacle1_speedy = 3;
+
+// Enemy object 2
+var enemy_obj2_height = 20;
+var enemy_obj2_width = 10;
+var enemy_obj2_x = 150;
+var enemy_obj2_radius = 10;
+var enemy_obj2_y = 334;
+var enemy_obj2_main = (canvas.width-enemy_obj2_width) / 2;
+var obstacle2_speedx = 3;
+var obstacle2_speedy = 3;
+
+// Enemy object 3
+var enemy_obj3_height = 20;
+var enemy_obj3_width = 10;
+var enemy_obj3_x = 264;
+var enemy_obj3_radius = 10;
+var enemy_obj3_y = 154;
+var enemy_obj3_main = (canvas.width-enemy_obj3_width) / 2;
+var obstacle3_speedx = 3;
+var obstacle3_speedy = 3;
+
+// Enemy object 4
+var enemy_obj4_height = 20;
+var enemy_obj4_width = 10;
+var enemy_obj4_x = 304;
+var enemy_obj4_radius = 10;
+var enemy_obj4_y = 50;
+var enemy_obj4_main = (canvas.width-enemy_obj4_width) / 2;
+var obstacle4_speedx = 5;
+var obstacle4_speedy = 3;
+
+// Enemy object 5
+var enemy_obj5_height = 20;
+var enemy_obj5_width = 10;
+var enemy_obj5_x = 434;
+var enemy_obj5_radius = 10;
+var enemy_obj5_y = 90;
+var enemy_obj5_main = (canvas.width-enemy_obj5_width) / 2;
+var obstacle5_speedx = 3;
+var obstacle5_speedy = 3;
+
+// Enemy object 6
+var enemy_obj6_height = 20;
+var enemy_obj6_width = 10;
+var enemy_obj6_x = 354;
+var enemy_obj6_radius = 10;
+var enemy_obj6_y = 270;
+var enemy_obj6_main = (canvas.width-enemy_obj6_width) / 2;
+var obstacle6_speedx = 4;
+var obstacle6_speedy = 3;
+
+// Enemy object 7
+var enemy_obj7_height = 20;
+var enemy_obj7_width = 10;
+var enemy_obj7_x = 289;
+var enemy_obj7_radius = 10;
+var enemy_obj7_y = 364;
+var enemy_obj7_main = (canvas.width-enemy_obj7_width) / 3;
+var obstacle7_speedx = 3;
+var obstacle7_speedy = 3;
+
+// Enemy object 8
+var enemy_obj8_height = 20;
+var enemy_obj8_width = 10;
+var enemy_obj8_x = 164;
+var enemy_obj8_radius = 10;
+var enemy_obj8_y = 445;
+var enemy_obj8_main = (canvas.width-enemy_obj8_width) / 2;
+var obstacle8_speedx = 3;
+var obstacle8_speedy = 3;
+
+// Enemy object 9
+var enemy_obj9_height = 20;
+var enemy_obj9_width = 10;
+var enemy_obj9_x = 374;
+var enemy_obj9_radius = 10;
+var enemy_obj9_y = 220;
+var enemy_obj9_main = (canvas.width-enemy_obj9_width) / 2;
+var obstacle9_speedx = 3;
+var obstacle9_speedy = 3;
+
+// Winning object
+var enemy_obj10_height = 20;
+var enemy_obj10_width = 10;
+var enemy_obj10_x = 470;
+var enemy_obj10_radius = 10;
+var enemy_obj10_y = 110;
+var enemy_obj10_main = (canvas.width-enemy_obj10_width) / 2;
+var obstacle10_speedx = 3;
+var obstacle10_speedy = 3;
+//...
+
+var rightPressed = false;
+var leftPressed = false;
+
+
+///////////////////////////////
+///// GAME LOOP FUNCTIONS /////
+///////////////////////////////
+// Event listeners for keyboard
+document.addEventListener("Keydown", keyDownHandler, false);
+document.addEventListener("Keyup", keyUpHandler, false);
+
+// Keydown and up listeners will change states from true to false...
+function keyDownHandler(e) {
+  if(e.key == "Right" || e.key == "ArrowRight") {
+    rightPressed = true;
+  }
+  else if(e.key == "Left" || e.key == "ArrowLeft") {
+    leftPressed = true;
+  }
+}
+
+function keyUpHandler(e) {
+  if(e.key == "Right" || e.key == "ArrowRight") {
+    rightPressed = false;
+  }
+  else if(e.key == "Left" || e.key == "ArrowLeft") {
+    leftPressed = false;
+  }
+}
+//...
+
+
+// Draws main objects on canvas...
+// Gives player object the ability to change x y coordinates by 2
+// frames per second.
+function objects() {
+  // Obstacle functions
+  // Player object
+  ctx.beginPath()
+  ctx.rect(player_x,player_y,player_width,player_height);
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+  ctx.closePath();
+    // Player movement...
+  if(rightPressed) {
+    playerX += 7;
+  }
+  else if(leftPressed) {
+    playerX -= 7;
+  }
+  //...
+
+  // Soldier obstacle 1
+  ctx.beginPath();
+  ctx.drawImage(soldier,soldier_x,soldier_y,soldier_width,soldier_height);
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 1
+  ctx.beginPath();
+  ctx.rect(obstacle1_x,obstacle1_y,obstacle1_width,obstacle1_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+   // Obstacle 2
+  ctx.beginPath();
+  ctx.rect(obstacle2_x,obstacle2_y,obstacle2_width,obstacle2_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 3
+  ctx.beginPath();
+  ctx.rect(obstacle3_x,obstacle3_y,obstacle3_width,obstacle3_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 4
+  ctx.beginPath();
+  ctx.rect(obstacle4_x,obstacle4_y,obstacle4_width,obstacle4_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 5
+  ctx.beginPath();
+  ctx.rect(obstacle5_x,obstacle5_y,obstacle5_width,obstacle5_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 6
+  ctx.beginPath();
+  ctx.rect(obstacle6_x,obstacle6_y,obstacle6_width,obstacle6_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 7
+  ctx.beginPath();
+  ctx.rect(obstacle7_x,obstacle7_y,obstacle7_width,obstacle7_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 8
+  ctx.beginPath();
+  ctx.rect(obstacle8_x,obstacle8_y,obstacle8_width,obstacle8_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 9
+  ctx.beginPath();
+  ctx.rect(obstacle9_x,obstacle9_y,obstacle9_width,obstacle9_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 10
+  ctx.beginPath();
+  ctx.rect(obstacle10_x,obstacle10_y,obstacle10_width,obstacle10_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 11
+  ctx.beginPath();
+  ctx.rect(obstacle11_x,obstacle11_y,obstacle11_width,obstacle11_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+
+  // Obstacle 12
+  ctx.beginPath();
+  ctx.rect(obstacle12_x,obstacle12_y,obstacle12_width,obstacle12_height);
+  ctx.fillStyle = "gray";
+  ctx.fill();
+  ctx.closePath();
+  //...
+}
+
+
+function enemy_objects() {
+  // Enemy object 1
+  ctx.beginPath();
+  ctx.arc(enemy_obj1_x,enemy_obj1_y,enemy_obj1_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj1_x += obstacle1_speedx;
+  if(enemy_obj1_x + obstacle1_speedx > obstacle1_main) {
+  	obstacle1_speedx = -obstacle1_speedx;
+  }
+  if(enemy_obj1_x + obstacle1_speedx > canvas.width-enemy_obj1_radius  || enemy_obj1_x + obstacle1_speedx < enemy_obj1_radius) {
+  	obstacle1_speedx = -obstacle1_speedx;
+  }
+
+  // Enemy object 2
+  ctx.beginPath();
+  ctx.arc(enemy_obj2_x,enemy_obj2_y,enemy_obj2_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj2_x += obstacle2_speedx;
+  if(enemy_obj2_x + obstacle2_speedx > obstacle2_main) {
+  	obstacle2_speedx = -obstacle2_speedx;
+  }
+  if(enemy_obj2_x + obstacle2_speedx > canvas.width-enemy_obj2_radius  || enemy_obj2_x + obstacle2_speedx < enemy_obj2_radius) {
+  	obstacle2_speedx = -obstacle2_speedx;
+  }
+
+  // Enemy object 3
+  ctx.beginPath();
+  ctx.arc(enemy_obj3_x,enemy_obj3_y,enemy_obj3_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj3_x += obstacle3_speedx;
+  if(enemy_obj3_x + obstacle3_speedx < obstacle3_main) {
+  	obstacle3_speedx = -obstacle3_speedx;
+  }
+  if(enemy_obj3_x + obstacle3_speedx > canvas.width-enemy_obj3_radius  || enemy_obj3_x + obstacle3_speedx < enemy_obj3_radius) {
+  	obstacle3_speedx = -obstacle3_speedx;
+  }
+
+  // Enemy object 4
+  ctx.beginPath();
+  ctx.arc(enemy_obj4_x,enemy_obj4_y,enemy_obj4_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj4_x += obstacle4_speedx;
+  if(enemy_obj4_x + obstacle4_speedx < obstacle4_main) {
+  	obstacle4_speedx = -obstacle4_speedx;
+  }
+  if(enemy_obj4_x + obstacle4_speedx > canvas.width-enemy_obj4_radius  || enemy_obj4_x + obstacle4_speedx < enemy_obj4_radius) {
+  	obstacle4_speedx = -obstacle4_speedx;
+  }
+ 
+
+  // Enemy object 5
+  ctx.beginPath();
+  ctx.arc(enemy_obj5_x,enemy_obj5_y,enemy_obj5_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj5_x += obstacle5_speedx;
+  if(enemy_obj5_x + obstacle5_speedx < obstacle5_main) {
+  	obstacle5_speedx = -obstacle5_speedx;
+  }
+  if(enemy_obj5_x + obstacle5_speedx > canvas.width-enemy_obj5_radius  || enemy_obj5_x + obstacle5_speedx < enemy_obj5_radius) {
+  	obstacle5_speedx = -obstacle5_speedx;
+  }
+  
+
+  // Enemy object 6
+  ctx.beginPath();
+  ctx.arc(enemy_obj6_x,enemy_obj6_y,enemy_obj6_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj6_x += obstacle6_speedx;
+  if(enemy_obj6_x + obstacle6_speedx < obstacle6_main) {
+  	obstacle6_speedx = -obstacle6_speedx;
+  }
+  if(enemy_obj6_x + obstacle6_speedx > canvas.width-enemy_obj6_radius  || enemy_obj6_x + obstacle6_speedx < enemy_obj6_radius) {
+  	obstacle6_speedx = -obstacle6_speedx;
+  }
+  
+
+  // Enemy object 7
+  ctx.beginPath();
+  ctx.arc(enemy_obj7_x,enemy_obj7_y,enemy_obj7_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj7_x += obstacle7_speedx;
+  if(enemy_obj7_x + obstacle7_speedx < obstacle7_main) {
+  	obstacle6_speedx = -obstacle6_speedx;
+  }
+  if(enemy_obj7_x + obstacle7_speedx > canvas.width-enemy_obj7_radius  || enemy_obj7_x + obstacle7_speedx < enemy_obj7_radius) {
+  	obstacle7_speedx = -obstacle7_speedx;
+  }
+  
+
+  // Enemy object 8
+  ctx.beginPath();
+  ctx.arc(enemy_obj8_x,enemy_obj8_y,enemy_obj8_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj8_x += obstacle8_speedx;
+  if(enemy_obj8_x + obstacle8_speedx > obstacle8_main) {
+  	obstacle8_speedx = -obstacle8_speedx;
+  }
+  if(enemy_obj8_x + obstacle8_speedx > canvas.width-enemy_obj8_radius  || enemy_obj8_x + obstacle8_speedx < enemy_obj8_radius) {
+  	obstacle8_speedx = -obstacle8_speedx;
+  }
+  
+
+  // Enemy object 9
+  ctx.beginPath();
+  ctx.arc(enemy_obj9_x,enemy_obj9_y,enemy_obj9_radius,0,Math.PI*2);
+  ctx.fillStyle = "ADD8E6";
+  ctx.fill();
+  ctx.closePath();
+  enemy_obj9_x += obstacle9_speedx;
+  if(enemy_obj9_x + obstacle9_speedx < obstacle9_main) {
+  	obstacle9_speedx = -obstacle9_speedx;
+  }
+  if(enemy_obj9_x + obstacle9_speedx > canvas.width-enemy_obj9_radius  || enemy_obj9_x + obstacle9_speedx < enemy_obj9_radius) {
+  	obstacle9_speedx = -obstacle9_speedx;
+  }
+ 
+
+  // Winning Object
+  ctx.beginPath();
+  ctx.rect(enemy_obj10_x,enemy_obj10_y,enemy_obj10_width,enemy_obj10_height);
+  ctx.fillStyle = "green";
+  ctx.fill();
+  ctx.closePath();
+}
+
+
+// Calls all main object functions
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  objects();
+  enemy_objects();
+}
+
+setInterval(draw, 10);
+</script>
+</body>
+</html>
