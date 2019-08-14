@@ -8,6 +8,8 @@
 This collection was made to hoold all files partening to video game projects that I have developed over the course of 2019.
 <h1>GENRES:</h1>
 
+<img width="790" alt="Screen Shot 2019-07-30 at 12 29 57 PM" src="https://user-images.githubusercontent.com/36040531/63055909-e2cd3200-beb4-11e9-80fc-5b7fab88ef70.png">
+
 <img width="1144" alt="Screen Shot 2019-08-14 at 4 52 14 PM" src="https://user-images.githubusercontent.com/36040531/63055503-05ab1680-beb4-11e9-827e-d05020ed8fb8.png">
 
 
