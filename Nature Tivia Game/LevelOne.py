@@ -9,41 +9,42 @@ import sys
 #####################
 ##### VARIABLES #####
 #####################
-# Variables that relate to constructing all questions related to round one.
-question_One = "What is the name of the process where plants absorb sunlight for energy?"
-question_Two = "What is the name of the season where animals, both male anf female, look for mates to produce new life?"
-question_Three = "How many years have homosapiens walked the earth?"
-question_Four = "How many oceans are known in existance on earth?"
-question_Five = "What is the name of the proccess of pressurized lava exiting an opening in a volcano."
-
 # Hint variables
+hint_One = "HINT: PHOTOgraphy"
+hint_Two = "HINT: They're looking for a mate..."
+hint_Three = "HINT: I've been asleep for one year lower than the legal drinking age times 10000 years."
+hint_Four = "HINT: Knew this since I was four...duh."
+hint_Five = "HINT: wow my dad looks like he's going erupt drom anger...."
 
-hint_One = "PHOTOgraphy"
-hint_Two = "They're looking for a mate..."
-hint_Three = "I've been asleep for one year lower than the legal drinking age times 10000 years."
-hint_Four = "Knew this since I was four, duh."
-hint_Five = "who my dad looks like he's going erupt drom anger...."
+# Variables that relate to constructing all questions related to round one.
+question_One = "What is the name of the process where plants absorb sunlight for energy?" + hint_One
+question_Two = "What is the name of the season where animals, both male anf female, look for mates to produce new life?" + hint_Two
+question_Three = "How many years have homosapiens walked the earth?" + hint_Three
+question_Four = "How many oceans are known in existance on earth?" + hint_Four
+question_Five = "What is the name of the proccess of pressurized lava exiting an opening in a volcano." + hint_Five
+
 # Game Score 
 rd_Point = 10
-maximum_Points = 50
+maximum_Points = 50   
 
+##########################
+##### GAME QUESTIONS #####
+##########################
 # Class level_One will hold all round one operating features
-class level_One:
+class q_One:
+  def __init__(self):
+    # __init__ function for proper class setup.
+    print("File running")
+
  # Def round_Questions will contain all of level one's questions
   def round_Questions(self):
-    print("Instructions: ")
+    print("ROUND ONE")
     # input variables will contain round one questions
     input_One = input(question_One)
     # Question one if / else statements
     if input_One == "Photosynthesis":
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_One == "": # If player enters in anything else besides the right answer
-         print("you get one more try! Here is a hint") 
-         print(hint_One)
-    elif input_One == "Photosynthesis": # Gives player a second chance
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
+      print("Player has been awarded " + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
@@ -52,13 +53,7 @@ class level_One:
     # Question two if / else statements
     if input_Two == "Mating Season":
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Two == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Two)
-    elif input_Two == "Mating Season": # Gives player a second chance
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
+      print("Player has been awarded " + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
@@ -67,46 +62,34 @@ class level_One:
     # Question three if / else statements
     if input_Three == "20000":
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Three == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Three)
-    elif input_Three == "20000": # Gives player a second chance
+      print("Player has been awarded " + str(rd_Point))
+    elif input_Three == "Twenty Thousand Years": # Gives player a second chance
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
+      print("Player has been awarded " + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
     
     input_Four = input(question_Four)
     # Question four if / else statements
-    if input_Four == "Blue":
+    if input_Four == "Four":
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Four == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Four)
-    elif input_Four == "Blue": # Gives player a second chance
+      print("Player has been awarded " + str(rd_Point))
+    elif input_Four == "4": # Gives player a second chance
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
+      print("Player has been awarded " + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
 
     input_Five = input(question_Five)
     # Question five if / else statements
-    if input_Five == "Four":
+    if input_Five == "Eruption":
       print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Five == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Five)
-    elif input_Two == "Four": # Gives player a second chance
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
+      print("Player has been awarded " + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
 
-# Game_x will contain level_One class
-game_x = level_One
+    # Awards player with a total of 50 points
+    print("Congratz! you beat round one and earned a total of " + str(maximum_Points) + "points")
