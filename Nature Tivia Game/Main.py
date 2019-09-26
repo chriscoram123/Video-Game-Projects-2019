@@ -3,15 +3,16 @@
   Created by: Christopher S Coram
   Created on: 09242019
 """
+# ------- CLASS IMPORTS -------
 # import classes from other python files located in directiry
 from LevelOne import *
+from LevelTwo import *
+from LevelThree import *
+
 
 #####################
 ##### VARIABLES #####
 #####################
-
-# ------- CLASS IMPORTS -------
-from LevelOne import *
 
 # Main title display 
 top_Layer =  "1001000100100010001000"
@@ -27,6 +28,7 @@ game_Running = True
 ##### WHILE LOOP #####
 ######################
 while game_Running:
+  # Video game title display
   print(top_Layer)
   print(game_Title)
   print(developer)
