@@ -3,6 +3,8 @@
   Created by: Christopher S Coram
   Created on: 09242019
 """
+import sys
+
 #####################
 ##### VARIABLES #####
 #####################
