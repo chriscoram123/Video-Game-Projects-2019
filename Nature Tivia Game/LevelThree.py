@@ -8,19 +8,20 @@ import sys
 #####################
 ##### VARIABLES #####
 #####################
-# Variables that relate to constructing all questions related to round one.
-question_One = ""
-question_Two = ""
-question_Three = ""
-question_Four = ""
-question_Five = ""
-
 # Hint variables
-hint_One = ""
-hint_Two = ""
-hint_Three = ""
-hint_Four = ""
-hint_Five = ""
+hint_One = "HINT: ..."
+hint_Two = "HINT:  ..."
+hint_Three = "HINT: ..."
+hint_Four = "HINT: ..."
+hint_Five = "HINT: ... "
+
+# Variables that relate to constructing all questions related to round one.
+question_One = "How many tenticles does a squid have?..." + hint_One
+question_Two = "How far can a bald eagle see something like a rabbit?" + hint_Two
+question_Three = "Do male sea horses give birth?" + hint_Three
+question_Four = "Whats the most venomous spider in the world?" + hint_Four
+question_Five = "Are black bears dangerous" + hint_Five
+
 # Game Score 
 rd_Point = 10
 maximum_Points = 50
@@ -30,20 +31,22 @@ maximum_Points = 50
 ##### GAME QUESTIONS #####
 ##########################
 # Class level_One will hold all round one operating features
-class level_Three:
+class q_Three:
+  def __init__(self):
+    # __init__ function for proper class setup.
+    print("File running")
+
  # Def round_Questions will contain all of level one's questions
-  def round_Questions(self):
-    print("Instructions: ")
+  def round_Questions_Three(self):
+    print("ROUND THREE")
+    print("NO HINTS!")
     # input variables will contain round one questions
     input_One = input(question_One)
     # Question one if / else statements
-    if input_One == "---":
+    if input_One == "two":
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
-    elif input_One == "": # If player enters in anything else besides the right answer
-         print("you get one more try! Here is a hint") 
-         print(hint_One)
-    elif input_One == "---": # Gives player a second chance
+    elif input_One == "2": # Gives player a second chance
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
     else: # If player enters in wrong answer a second time
@@ -52,13 +55,10 @@ class level_Three:
     
     input_Two = input(question_Two)
     # Question two if / else statements
-    if input_Two == "---":
+    if input_Two == "three miles":
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
-    elif input_Two == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Two)
-    elif input_Two == "---": # Gives player a second chance
+    elif input_Two == "3 miles": # Gives player a second chance
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
     else: # If player enters in wrong answer a second time
@@ -67,13 +67,7 @@ class level_Three:
     
     input_Three = input(question_Three)
     # Question three if / else statements
-    if input_Three == "---":
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Three == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Three)
-    elif input_Three == "---": # Gives player a second chance
+    if input_Three == "No":
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
     else: # If player enters in wrong answer a second time
@@ -82,13 +76,7 @@ class level_Three:
     
     input_Four = input(question_Four)
     # Question four if / else statements
-    if input_Four == "---":
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Four == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Four)
-    elif input_Four == "---": # Gives player a second chance
+    if input_Four == "Atrax Robustus":
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
     else: # If player enters in wrong answer a second time
@@ -97,18 +85,12 @@ class level_Three:
 
     input_Five = input(question_Five)
     # Question five if / else statements
-    if input_Five == "---":
-      print("Correct!")
-      print("Player has been awarded" + str(rd_Point))
-    elif input_Five == "": # If player enters in anything else besides the right answer
-      print("you get one more try! Here is a hint")
-      print(hint_Five)
-    elif input_Two == "---": # Gives player a second chance
+    if input_Five == "No":
       print("Correct!")
       print("Player has been awarded" + str(rd_Point))
     else: # If player enters in wrong answer a second time
       print("Wrong! GAME OVER")
       sys.exit()
-
-# Game_x will contain level_One class
-game_x = level_Three
+    
+    # Awards player with a total of 50 points
+    print("Congratz! you beat round three and earned a total of " + str(maximum_Points) + "points")
